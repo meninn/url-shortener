@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Service
 public class LinkService {
-    private LinkRepository linkRepository;
+    private final LinkRepository linkRepository;
 
     public LinkService(LinkRepository linkRepository) {
         this.linkRepository = linkRepository;
@@ -28,9 +28,9 @@ public class LinkService {
         return linkRepository.save(link);
     }
 
-    public Link getOriginalUrl(String shortenedUrl) {
+    public Link getUrl(String shortenedUrl) {
         try {
-            return linkRepository.findByOriginalUrl(shortenedUrl);
+            return linkRepository.findByUrl(shortenedUrl);
         } catch (Exception error) {
             throw new RuntimeException("URL not exist", error);
         }
