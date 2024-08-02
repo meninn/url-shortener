@@ -1,7 +1,7 @@
 # Encurtador de URLs
 
 O desafio foi implementar um serviço que permite encurtar URLs longas para torná-las mais compactas e fáceis de
-compartilhar.
+compartilhar. O desafio foi proposto pelo [backend-br](https://github.com/backend-br/desafios/tree/master/url-shortener).
 
 ## Requisitos
 
