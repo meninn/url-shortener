@@ -30,7 +30,7 @@ public class LinkService {
 
     public Link getUrl(String shortenedUrl) {
         try {
-            return linkRepository.findByUrl(shortenedUrl);
+            return linkRepository.findByShortenedUrl(shortenedUrl);
         } catch (Exception error) {
             throw new RuntimeException("URL not exist", error);
         }

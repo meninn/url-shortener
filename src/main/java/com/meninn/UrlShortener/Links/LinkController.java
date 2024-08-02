@@ -1,11 +1,11 @@
 package com.meninn.UrlShortener.Links;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -35,4 +35,17 @@ public class LinkController {
          return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @GetMapping("/r/{shortenUrl}")
+    public void redirectLink(@PathVariable String shortenUrl, HttpServletResponse response) throws IOException {
+        Link link = linkService.getUrl(shortenUrl);
+
+        System.out.println(link);
+
+        if (link != null) {
+            System.out.println(link.getUrl());
+            response.sendRedirect(link.getUrl());
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+    }
 }
